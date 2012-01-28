@@ -1,2 +1,42 @@
 just a simple project, demonstrating a bug in the weld CDI framework 
 http://seamframework.org/Community/BeanManagergetBeansTypeAnnotationReturnsDifferentResultsWhenCalledFromACDIExtensionAfterBeanDiscoveryLifecycleObserverMethod
+
+consider following example:
+
+package com.test.weld.extension;
+import javax.enteIrprise.event.Observes;
+import javax.enterprise.inject.spi.AfterBeanDiscovery;
+import javax.enterprise.inject.spi.AfterDeploymentValidation;
+import javax.enterprise.inject.spi.BeanManager;
+import javax.enterprise.inject.spi.Extension;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.test.weld.ClassA;
+import com.test.weld.ClassB;
+
+public class WeldExtension implements Extension {	
+	private static final Logger LOG = LoggerFactory.getLogger(WeldExtension.class);
+	
+	void afterBeanDiscovery(@Observes AfterBeanDiscovery event, BeanManager beanManager) { 
+		LOG.info("[afterBeanDiscovery       ] ClassA beans : {}", beanManager.getBeans(ClassA.class).size());
+		LOG.info("[afterBeanDiscovery       ] ClassB beans : {}", beanManager.getBeans(ClassB.class).size());
+		LOG.info("[afterBeanDiscovery       ] Object beans : {}", beanManager.getBeans(Object.class).size());
+	}
+	
+	
+	void afterDeploymentValidation(@Observes AfterDeploymentValidation event, BeanManager beanManager) {
+		LOG.info("[afterDeploymentValidation] ClassA beans : {}", beanManager.getBeans(ClassA.class).size());
+		LOG.info("[afterDeploymentValidation] ClassB beans : {}", beanManager.getBeans(ClassB.class).size());
+		LOG.info("[afterDeploymentValidation] Object beans : {}", beanManager.getBeans(Object.class).size());	
+	}}
+after a test run, console log shows that there are different numbers of ClassA and ClassB beans after bean discovery and deployment validation events.
+
+[main] INFO com.test.weld.extension.WeldExtension - [afterBeanDiscovery       ] ClassA beans : 0
+[main] INFO com.test.weld.extension.WeldExtension - [afterBeanDiscovery       ] ClassB beans : 0
+[main] INFO com.test.weld.extension.WeldExtension - [afterBeanDiscovery       ] Object beans : 12
+[main] INFO com.test.weld.extension.WeldExtension - [afterDeploymentValidation] ClassA beans : 1
+[main] INFO com.test.weld.extension.WeldExtension - [afterDeploymentValidation] ClassB beans : 1
+[main] INFO com.test.weld.extension.WeldExtension - [afterDeploymentValidation] Object beans : 12
+I might be wrong, but I suppose that results of beanManager.getBeans(ClassA.class).size() should be equal in both observer methods as the results of beanManager.getBeans(Object.class) are the same.
+
+weld version used is 1.1.5.Final (weld-core and weld-se-core)
