@@ -13,7 +13,7 @@ import com.test.weld.ClassA;
 import com.test.weld.ClassB;
 /**
  * 
- * 
+ * @author marko
  *
  */
 public class WeldExtension implements Extension {
