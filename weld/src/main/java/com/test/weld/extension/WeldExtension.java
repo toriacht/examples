@@ -21,6 +21,7 @@ public class WeldExtension implements Extension {
 	private static final Logger LOG = LoggerFactory.getLogger(WeldExtension.class);
 	
 	/**
+	 * after bean discovery 
 	 * 
 	 * @param event
 	 * @param beanManager
@@ -33,7 +34,7 @@ public class WeldExtension implements Extension {
 	}
 	
 	/**
-	 * 
+	 * after bean validation
 	 * @param event
 	 * @param beanManager
 	 */
