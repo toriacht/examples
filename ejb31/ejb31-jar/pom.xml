@@ -6,13 +6,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
+  
   <artifactId>ejb31-jar</artifactId>
   <name>JBOSS JEE6 JAR module</name>
   <packaging>ejb</packaging>
   
     <build>
   	<plugins>
-  	
   		<plugin>
   			<groupId>org.apache.maven.plugins</groupId>
   			<artifactId>maven-ejb-plugin</artifactId>
@@ -38,8 +38,8 @@
     <dependencies>
     	<dependency>
     		<groupId>${project.groupId}</groupId>
-    		<artifactId>ejb31-api</artifactId>
-    		<version>0.0.1-SNAPSHOT</version>
+    		<artifactId>${project.parent.artifactId}-api</artifactId>
+    		<version>${project.version}</version>
     	</dependency>
     </dependencies>
     

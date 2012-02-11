@@ -26,4 +26,19 @@
 	</build>
 	
 	
+    <dependencies>
+    	<dependency>
+    		<groupId>${project.groupId}</groupId>
+    		<artifactId>${project.parent.artifactId}-jar</artifactId>
+    		<version>${project.version}</version>
+    		<type>ejb</type>
+    		<scope>provided</scope>
+    	</dependency>
+    	<dependency>
+    		<groupId>${project.groupId}</groupId>
+    		<artifactId>${project.parent.artifactId}-api</artifactId>
+    		<version>${project.version}</version>
+    		<scope>provided</scope>
+    	</dependency>
+    </dependencies>
 </project>
