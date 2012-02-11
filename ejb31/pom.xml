@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>ejb31</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>ejb31-ear</module>
+    <module>ejb31-jar</module>
+    <module>ejb31-api</module>
+    <module>ejb31-war</module>
+  </modules>
+  	<properties>
+		<version.weld>1.1.5.Final</version.weld>
+		<version.slf4j>1.6.4</version.slf4j>
+		<version.java>1.6</version.java>
+		<version.maven-compiler-plugin>2.3.2</version.maven-compiler-plugin>
+		<version.ejb>3.1</version.ejb>
+		<version.jee>6</version.jee>
+		<version.javaee-api>6.0</version.javaee-api>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.ear.contextRoot>/ejb31</project.ear.contextRoot>
+		<project.ear.defaultLibBundleDir>lib</project.ear.defaultLibBundleDir>
+		<project.ear.Dependencies>org.jboss.logging, org.slf4j</project.ear.Dependencies>
+		<project.shortName>ejb31</project.shortName>
+		
+  	</properties>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.maven-compiler-plugin}</version>
+				<configuration>
+					<source>${version.java}</source>
+					<target>${version.java}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>http://repository.jboss.org/nexus/content/groups/public</url>
+
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+
+	</repositories>
+	
+	<name>JBOSS JEE6 MVN project</name>
+	
+	<dependencies>
+	
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${version.slf4j}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>${version.slf4j}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${version.javaee-api}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>
