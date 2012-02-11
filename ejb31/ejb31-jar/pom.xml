@@ -1,46 +1,47 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>ejb31</artifactId>
-    <groupId>com.example</groupId>
-    <version>0.0.1-SNAPSHOT</version>
-    <relativePath>..</relativePath>
-  </parent>
-  
-  <artifactId>ejb31-jar</artifactId>
-  <name>JBOSS JEE6 JAR module</name>
-  <packaging>ejb</packaging>
-  
-    <build>
-  	<plugins>
-  		<plugin>
-  			<groupId>org.apache.maven.plugins</groupId>
-  			<artifactId>maven-ejb-plugin</artifactId>
-  			<version>2.3</version>
-			<configuration>
-				<ejbVersion>${version.ejb}</ejbVersion>
-			</configuration>
-  		</plugin>
-  		
- 		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>${version.maven-compiler-plugin}</version>
-			<configuration>
-				<source>${version.java}</source>
-				<target>${version.java}</target>
-			</configuration>
-		</plugin>
-		
-  	</plugins>
-  </build>
-  
-    <dependencies>
-    	<dependency>
-    		<groupId>${project.groupId}</groupId>
-    		<artifactId>${project.parent.artifactId}-api</artifactId>
-    		<version>${project.version}</version>
-    	</dependency>
-    </dependencies>
-    
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>ejb31</artifactId>
+		<groupId>com.example</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<artifactId>ejb31-jar</artifactId>
+	<name>JBOSS JEE6 JAR module</name>
+	<packaging>ejb</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<ejbVersion>${version.ejb}</ejbVersion>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.maven-compiler-plugin}</version>
+				<configuration>
+					<source>${version.java}</source>
+					<target>${version.java}</target>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${project.parent.artifactId}-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
 </project>

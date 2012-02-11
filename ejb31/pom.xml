@@ -27,9 +27,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.ear.defaultLibBundleDir>lib</project.ear.defaultLibBundleDir>
 		<project.ear.Dependencies>org.jboss.logging, org.slf4j</project.ear.Dependencies>
-
-
-
 	</properties>
 
 	<build>
