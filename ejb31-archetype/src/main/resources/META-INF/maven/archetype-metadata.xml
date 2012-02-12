@@ -43,9 +43,6 @@
           <directory>src/main/java</directory>
         </fileSet>
         <fileSet filtered="false" encoding="UTF-8">
-          <directory>src/main/resources</directory>
-        </fileSet>
-        <fileSet filtered="false" encoding="UTF-8">
           <directory>src/test/java</directory>
         </fileSet>
         <fileSet filtered="false" encoding="UTF-8">
