@@ -31,7 +31,7 @@ a shorcut:
 >   -DarchetypeGroupId=com.example           \
 >   -DarchetypeArtifactId=ejb31-archetype    \
 >   -DarchetypeVersion=0.0.1-SNAPSHOT        \
->   -DgroupId=<my group id>                  \
->   -DartifactId=<my arhifact id>            \
->   -Dversion=<my version id>        
+>   -DgroupId=myGroupId                      \
+>   -DartifactId=myArhifactId                \
+>   -Dversion=myVersionId        
 
