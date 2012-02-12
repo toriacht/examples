@@ -22,23 +22,10 @@ then choose a numer representing ejb31-archetype
 > 1: local -> ejb31-archetype (ejb31-archetype)
 > Choose a number: :
 
-give answer on few asked questions 
+pleas answer on all asked questions 
 
-a shorcut:
+a shorcut (run without any questions asked):
 
-> mvn archetype:generate                     \
+> mvn archetype:generate -DarchetypeCatalog=local -DarchetypeGroupId=com.example -DarchetypeArtifactId=ejb31-archetype -DarchetypeVersion=0.0.1-SNAPSHOT -DgroupId=myGroupId -DartifactId=myArhifactId -Dversion=myVersionId        
 
->   -DarchetypeCatalog=local                 \
-
->   -DarchetypeGroupId=com.example           \
-
->   -DarchetypeArtifactId=ejb31-archetype    \
-
->   -DarchetypeVersion=0.0.1-SNAPSHOT        \
-
->   -DgroupId=myGroupId                      \
-
->   -DartifactId=myArhifactId                \
-
->   -Dversion=myVersionId        
-
+Note that this is an empty project, without any java files, if you try to deploy it as is, JBOSS will complain about ear structure. 
