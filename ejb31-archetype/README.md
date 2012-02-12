@@ -22,16 +22,23 @@ then choose a numer representing ejb31-archetype
 > 1: local -> ejb31-archetype (ejb31-archetype)
 > Choose a number: :
 
-in this case #1 and give answer on few questions asked by archetype.
+give answer on few asked questions 
 
 a shorcut:
 
 > mvn archetype:generate                     \
+
 >   -DarchetypeCatalog=local                 \
+
 >   -DarchetypeGroupId=com.example           \
+
 >   -DarchetypeArtifactId=ejb31-archetype    \
+
 >   -DarchetypeVersion=0.0.1-SNAPSHOT        \
+
 >   -DgroupId=myGroupId                      \
+
 >   -DartifactId=myArhifactId                \
+
 >   -Dversion=myVersionId        
 
