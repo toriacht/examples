@@ -16,27 +16,20 @@
 	
 	<name>JAR module</name>
 	
+	<properties>
+		<version.maven-ejb-plugin>2.3</version.maven-ejb-plugin>
+	</properties>
+	
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-ejb-plugin</artifactId>
-				<version>2.3</version>
+				<version>${version.maven-ejb-plugin}</version>
 				<configuration>
 					<ejbVersion>${version.ejb}</ejbVersion>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${version.maven-compiler-plugin}</version>
-				<configuration>
-					<source>${version.java}</source>
-					<target>${version.java}</target>
-				</configuration>
-			</plugin>
-
 		</plugins>
 	</build>
 

@@ -22,17 +22,19 @@
 		<version.weld>1.1.5.Final</version.weld>
 		<version.slf4j>1.6.4</version.slf4j>
 		<version.java>1.6</version.java>
-		<version.maven-compiler-plugin>2.3.2</version.maven-compiler-plugin>
 		<version.ejb>3.1</version.ejb>
 		<version.javaee-api>6.0</version.javaee-api>
 		<version.jboss.as>7.1.0.CR1b</version.jboss.as>
 		<version.jee>6</version.jee>
+		<version.junit>4.10</version.junit>
 		<version.arquillian-junit-container>1.0.0.CR7</version.arquillian-junit-container>
+		<version.maven-compiler-plugin>2.3.2</version.maven-compiler-plugin>
+		<version.maven-failsafe-plugin>2.12</version.maven-failsafe-plugin>
+		<version.maven-pmd-plugin>2.7</version.maven-pmd-plugin>
+		<version.cobertura-maven-plugin>2.5.1</version.cobertura-maven-plugin>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.ear.defaultLibBundleDir>lib</project.ear.defaultLibBundleDir>
 		<project.ear.Dependencies>org.jboss.logging, org.slf4j</project.ear.Dependencies>
-
-		<version.junit>4.10</version.junit>
 	</properties>
 
 	<build>
@@ -45,6 +47,21 @@
 					<source>${version.java}</source>
 					<target>${version.java}</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${version.maven-failsafe-plugin}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${version.maven-pmd-plugin}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>${version.cobertura-maven-plugin}</version>
 			</plugin>
 		</plugins>
 	</build>

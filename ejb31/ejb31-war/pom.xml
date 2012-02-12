@@ -21,17 +21,7 @@
 	</properties>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${version.maven-compiler-plugin}</version>
-				<configuration>
-					<source>${version.java}</source>
-					<target>${version.java}</target>
-				</configuration>
-			</plugin>
-				
+		<plugins>				
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${version.maven-war-plugin}</version>
