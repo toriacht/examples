@@ -15,6 +15,10 @@
 	<packaging>war</packaging>
 	
 	<name>WAR module</name>
+	
+	<properties>
+		<version.maven-war-plugin>2.2</version.maven-war-plugin>
+	</properties>
 
 	<build>
 		<plugins>
@@ -27,6 +31,15 @@
 					<target>${version.java}</target>
 				</configuration>
 			</plugin>
+				
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${version.maven-war-plugin}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			
 		</plugins>
 	</build>
 
