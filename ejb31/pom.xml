@@ -22,11 +22,15 @@
 		<version.java>1.6</version.java>
 		<version.maven-compiler-plugin>2.3.2</version.maven-compiler-plugin>
 		<version.ejb>3.1</version.ejb>
-		<version.jee>6</version.jee>
 		<version.javaee-api>6.0</version.javaee-api>
+		<version.jboss.as>7.1.0.CR1b</version.jboss.as>
+		<version.jee>6</version.jee>
+		<version.arquillian-junit-container>1.0.0.CR7</version.arquillian-junit-container>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.ear.defaultLibBundleDir>lib</project.ear.defaultLibBundleDir>
 		<project.ear.Dependencies>org.jboss.logging, org.slf4j</project.ear.Dependencies>
+
+		<version.junit>4.10</version.junit>
 	</properties>
 
 	<build>
@@ -84,6 +88,24 @@
 			<artifactId>javaee-api</artifactId>
 			<version>${version.javaee-api}</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<version>${version.arquillian-junit-container}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.as</groupId>
+			<artifactId>jboss-as-arquillian-container-remote</artifactId>
+			<version>${version.jboss.as}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<url>https://github.com/milenkovicm/examples</url>

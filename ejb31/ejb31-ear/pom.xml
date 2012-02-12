@@ -14,7 +14,7 @@
 	<name>JBOSS JEE6 EAR module</name>
 
 	<properties>
-		<version.jboss-as-maven-plugin>7.1.0.CR1b</version.jboss-as-maven-plugin>
+		<version.jboss-as-maven-plugin>${version.jboss.as}</version.jboss-as-maven-plugin>
 		<version.maven-ear-plugin>2.7</version.maven-ear-plugin>
 		<project.ear.contextRoot>/${project.parent.artifactId}</project.ear.contextRoot>
 	</properties>
