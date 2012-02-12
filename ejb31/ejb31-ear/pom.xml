@@ -19,7 +19,7 @@
 	<properties>
 		<version.jboss-as-maven-plugin>${version.jboss.as}</version.jboss-as-maven-plugin>
 		<version.maven-ear-plugin>2.7</version.maven-ear-plugin>
-		<project.ear.contextRoot>/${project.parent.artifactId}</project.ear.contextRoot>
+		<project.ear.contextRoot>${project.parent.artifactId}</project.ear.contextRoot>
 	</properties>
 
 	<build>
