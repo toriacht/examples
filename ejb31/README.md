@@ -16,7 +16,6 @@ PMD PLUGIN
 
 http://maven.apache.org/plugins/maven-pmd-plugin/
 
-
 Failsafe Plugin
 ---------------
 
@@ -35,3 +34,12 @@ Cobertura Maven Plugin
 * cobertura:cobertura Instruments, Tests, and Generates a Cobertura Report.
 
 http://mojo.codehaus.org/cobertura-maven-plugin/
+
+jbossas / jboss-as-maven-plugin
+-------------------------------
+
+* jboss-as:deploy Deploys the application.
+* jboss-as:redeploy Redeploys the application.
+* jboss-as:undeploy Undeploys the application.
+
+https://github.com/jbossas/jboss-as-maven-plugin

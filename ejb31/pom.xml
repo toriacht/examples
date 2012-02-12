@@ -131,4 +131,7 @@
 	<scm>
 		<url>git@github.com:milenkovicm/examples.git</url>
 	</scm>
+	<organization>
+		<name>Marko Milenkovic</name>
+	</organization>
 </project>
