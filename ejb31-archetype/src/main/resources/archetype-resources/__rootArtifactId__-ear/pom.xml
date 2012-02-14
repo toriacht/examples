@@ -41,9 +41,9 @@
 				<configuration>
 					<version>${version.jee}</version>
 					<defaultLibBundleDir>${project.ear.defaultLibBundleDir}</defaultLibBundleDir>
-					<applicationName>${project.parent.artifactId} application</applicationName>
+					<applicationName>${project.parent.artifactId}</applicationName>
 					<description>${project.parent.artifactId} JEE6 application</description>
-					<displayName>${project.parent.artifactId}</displayName>
+					<displayName>${project.parent.artifactId} JEE6 application</displayName>
 					<finalName>${project.parent.artifactId}</finalName>
 
 					<archive>
