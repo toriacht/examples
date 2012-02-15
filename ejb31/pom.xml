@@ -9,7 +9,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>JBOSS JEE6 Project</name>
+	<name>[${project.artifactId}] JBOSS JEE6 Project</name>
 
 	<modules>
 		<module>ejb31-ear</module>

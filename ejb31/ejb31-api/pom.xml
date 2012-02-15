@@ -14,6 +14,6 @@
 	<artifactId>ejb31-api</artifactId>
 	<packaging>jar</packaging>
 	
-	<name>API module</name>
+	<name>[${project.parent.artifactId}] API module</name>
 	
 </project>
