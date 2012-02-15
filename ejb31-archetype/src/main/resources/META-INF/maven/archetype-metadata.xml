@@ -13,22 +13,10 @@
   </fileSets>
   <modules>
     <module id="${rootArtifactId}-ear" dir="__rootArtifactId__-ear" name="${rootArtifactId}-ear">
-
       <fileSets>
-
         <fileSet filtered="false" encoding="UTF-8">
-          <directory>src/main/java</directory>
+          <directory>src/main/application</directory>
         </fileSet>
-        <fileSet filtered="false" encoding="UTF-8">
-          <directory>src/main/resources</directory>
-        </fileSet>
-        <fileSet filtered="false" encoding="UTF-8">
-          <directory>src/test/java</directory>
-        </fileSet>
-        <fileSet filtered="false" encoding="UTF-8">
-          <directory>src/test/resources</directory>
-        </fileSet>
-
         <fileSet encoding="UTF-8">
           <directory></directory>
           <includes>

@@ -13,7 +13,7 @@
 	<artifactId>${artifactId}</artifactId>
 	<packaging>ejb</packaging>
 	
-	<name>JAR module</name>
+	<name>[${project.parent.artifactId}] JAR module</name>
 	
 	<properties>
 		<version.maven-ejb-plugin>2.3</version.maven-ejb-plugin>

@@ -8,7 +8,7 @@
 	<version>${version}</version>
 	<packaging>pom</packaging>
 
-	<name>JBOSS JEE6 Project</name>
+	<name>[${project.artifactId}] JBOSS JEE6 Project</name>
 
 	<properties>
 		<version.weld>1.1.5.Final</version.weld>

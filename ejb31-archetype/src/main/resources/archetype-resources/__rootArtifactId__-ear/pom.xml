@@ -13,7 +13,7 @@
 	<artifactId>${artifactId}</artifactId>
 	<packaging>ear</packaging>
 
-	<name>EAR module</name>
+	<name>[${project.parent.artifactId}] EAR module</name>
 
 	<properties>
 		<version.jboss-as-maven-plugin>${version.jboss.as}</version.jboss-as-maven-plugin>
