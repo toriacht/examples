@@ -24,7 +24,7 @@
 		<version.java>1.6</version.java>
 		<version.ejb>3.1</version.ejb>
 		<version.javaee-api>6.0</version.javaee-api>
-		<version.jboss.as>7.1.0.CR1b</version.jboss.as>
+		<version.jboss.as>7.1.0.Final</version.jboss.as>
 		<version.jee>6</version.jee>
 		<version.junit>4.10</version.junit>
 		<version.arquillian-junit-container>1.0.0.CR7</version.arquillian-junit-container>

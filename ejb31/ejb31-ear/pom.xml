@@ -30,6 +30,7 @@
 				<version>${version.jboss-as-maven-plugin}</version>
 
 				<configuration>
+					<filename>${project.parent.artifactId}.${project.packaging}</filename>
 					<skip>false</skip>
 				</configuration>
 			</plugin>
