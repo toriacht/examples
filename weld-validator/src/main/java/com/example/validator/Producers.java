@@ -50,8 +50,4 @@ public class Producers {
 		
 		return (Integer) value;
 	}
-	
-	
-	
-
 }

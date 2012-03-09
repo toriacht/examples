@@ -27,7 +27,7 @@ public class ValidatorProducer {
 								.byProvider(HibernateValidator.class)
 								.configure();
 		
-		ValidatorFactory factory 		= configuration
+		ValidatorFactory factory = configuration
 								.addProperty( "hibernate.validator.fail_fast", "true" )
 								.buildValidatorFactory();
 		
