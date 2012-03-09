@@ -3,8 +3,13 @@ package com.example.validator;
 import javax.inject.Inject;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-
+/**
+ * 
+ * @author marko
+ *
+ */
 public class SimpleBean {
+	
 	@Inject
 	@Min(10)
 	private Integer integer;

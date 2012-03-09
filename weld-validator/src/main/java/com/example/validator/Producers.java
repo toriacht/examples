@@ -9,12 +9,17 @@ import javax.validation.Validator;
 
 import org.slf4j.Logger;
 
-
+/**
+ * How to verify injection point before injection
+ * current implementation does not support method level injection 
+ * 
+ * @author marko
+ *
+ */
 public class Producers {
 	
 	@Inject Validator validator;
 	@Inject Logger logger;
-	
 	
 	@Produces
 	public Integer produceInt(InjectionPoint injectionPoint) {
@@ -26,14 +31,13 @@ public class Producers {
 		
 		Set violations =  validator.validateValue(clazz, name, value);
 		
-		
 		if (violations.size() > 0){
-			logger.warn("violation(s) detected: {}", violations);
+			logger.warn("[{}]: violation(s) detected: {}", name,violations);
 		} else {
-			logger.debug("no violation(s) detected");
+			logger.debug("[{}]: no violation(s) detected!",name);
 		}
 		
-		return 9;
+		return (Integer) value;
 	}
 	
 	
