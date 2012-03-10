@@ -1,8 +1,8 @@
 package com.example.weld;
 
 public class SimpleClass {
-	public String sayHello(String name){
-		return "Hello "+name.toUpperCase();
-	}
+    public String sayHello(final String name) {
+        return "Hello " + name.toUpperCase();
+    }
 
 }
