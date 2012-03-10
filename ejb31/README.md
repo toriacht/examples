@@ -3,10 +3,10 @@ MAVEN JEE EJB 3.1 template project
 Template EJB 3.1 project for JBOSS 7.1 
 
 
-MAVEN PLUGINS USED
-==================
+MAVEN PLUGINS IN USE
+====================
 
-PMD PLUGIN
+PMD Plugin
 ----------
 
 * pmd:pmd creates a PMD site report based on the rulesets and configuration set in the plugin. It can also generate a pmd output file aside from the site report in any of the following formats: xml, csv or txt.
@@ -24,8 +24,8 @@ Failsafe Plugin
 
 http://maven.apache.org/plugins/maven-failsafe-plugin/
 
-Cobertura Maven Plugin
----------------
+Cobertura Plugin
+----------------
 
 * cobertura:check Check the Last Instrumentation Results.
 * cobertura:clean Clean up rogue files that cobertura maven plugin is tracking.
@@ -35,8 +35,8 @@ Cobertura Maven Plugin
 
 http://mojo.codehaus.org/cobertura-maven-plugin/
 
-jbossas / jboss-as-maven-plugin
--------------------------------
+JbossAS Plugin
+--------------
 
 * jboss-as:deploy Deploys the application.
 * jboss-as:redeploy Redeploys the application.
