@@ -63,7 +63,7 @@ public class ValidatorInterceptor {
         final InjectionPoint injectionPoint = this.findInjectionPoint(invocationContext);
 
         final Object result = invocationContext.proceed();
-        // do something smart with the result
+        // handle result somehow
         this.injectionPointValidator(injectionPoint, result);
 
         return result;
@@ -95,19 +95,21 @@ public class ValidatorInterceptor {
     public boolean injectionPointValidator(final InjectionPoint injectionPoint, final Object value) {
 
         if (injectionPoint == null) {
-            this.logger.debug("can't validate null injection point");
+            this.logger.debug("skipping null injection point");
             return true;
         }
 
         final String name = injectionPoint.getMember().getName();
         final Class<?> clazz = injectionPoint.getBean().getBeanClass();
 
-        this.logger.debug("validating injection point [{}] in class [{}]", name, clazz);
+        this.logger.debug("validating injection point: [{}] in class: [{}]", name, clazz);
+        this.logger.debug("reflection type: [{}]", injectionPoint.getMember().getClass());
+        this.logger.debug("required type: [{}]", injectionPoint.getType());
 
         final Set<?> violations = this.validator.validateValue(clazz, name, value);
 
         if (violations.size() > 0) {
-            this.logger.warn("[{}]: violation(s) detected: {}", name, violations);
+            this.logger.warn("[{}]: violation(s) detected: [{}]", name, violations);
             return true;
         } else {
             this.logger.debug("[{}]: no violation(s) detected!", name);

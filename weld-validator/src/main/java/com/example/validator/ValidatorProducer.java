@@ -33,8 +33,9 @@ import org.hibernate.validator.HibernateValidator;
 import org.hibernate.validator.HibernateValidatorConfiguration;
 
 /**
- * @see http://docs.jboss.org/hibernate/validator/4.2/reference/en-US/html/validator-specifics.html TODO: method validator does
- *      not work at the moment
+ * TODO: method validator does not work at the moment
+ * 
+ * @see http://docs.jboss.org/hibernate/validator/4.2/reference/en-US/html/validator-specifics.html
  * 
  * @see http://docs.jboss.org/hibernate/validator/4.2/reference/en-US/html/validator-specifics.html#validator-customoptions-
  *      methodvalidation
@@ -42,14 +43,18 @@ import org.hibernate.validator.HibernateValidatorConfiguration;
  * @author marko
  * 
  */
+
 @Singleton
 public class ValidatorProducer {
+    /**
+     * 
+     */
+    private static final String HIBERNATE_VALIDATOR_FAIL_FAST = "hibernate.validator.fail_fast";
+
     @Produces
     public Validator produceValidator() {
-
         final HibernateValidatorConfiguration configuration = Validation.byProvider(HibernateValidator.class).configure();
-
-        final ValidatorFactory factory = configuration.addProperty("hibernate.validator.fail_fast", "true")
+        final ValidatorFactory factory = configuration.addProperty(HIBERNATE_VALIDATOR_FAIL_FAST, "true")
                 .buildValidatorFactory();
 
         return factory.getValidator();

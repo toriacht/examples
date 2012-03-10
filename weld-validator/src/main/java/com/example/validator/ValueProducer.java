@@ -43,7 +43,7 @@ import org.slf4j.Logger;
 public class ValueProducer {
 
     @Inject
-    Logger logger;
+    private Logger logger;
 
     /**
      * 
@@ -53,9 +53,9 @@ public class ValueProducer {
 
     @Produces
     public Integer produceInt(final InjectionPoint injectionPoint) {
+        this.logger.debug("produce integer value for injection point: {}",injectionPoint);
+        final Integer MAGIC_VALUE = 8;
 
-        final Object value = 8;
-
-        return (Integer) value;
+        return MAGIC_VALUE;
     }
 }
