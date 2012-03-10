@@ -102,6 +102,7 @@ public class ValidatorInterceptor {
 			this.logger.debug("skipping null injection point");
 			return true;
 		}
+
 		this.counter.getProcessed().incrementAndGet();
 		final String name = injectionPoint.getMember().getName();
 		final Class<?> clazz = injectionPoint.getBean().getBeanClass();
@@ -117,7 +118,6 @@ public class ValidatorInterceptor {
 			this.logger.warn("[{}]: violation(s) detected: [{}]", name, violations);
 			return true;
 		} else {
-
 			this.logger.debug("[{}]: no violation(s) detected!", name);
 			return false;
 		}
