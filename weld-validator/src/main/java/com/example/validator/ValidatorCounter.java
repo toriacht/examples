@@ -29,19 +29,19 @@ import javax.inject.Singleton;
 
 /**
  * @author marko
- *
+ * 
  */
 @Singleton
 public class ValidatorCounter {
 
-    private final AtomicInteger processed = new AtomicInteger(0);
-    private final AtomicInteger invalid = new AtomicInteger(0);
+	private final AtomicInteger processed = new AtomicInteger(0);
+	private final AtomicInteger invalid = new AtomicInteger(0);
 
-    public AtomicInteger getProcessed() {
-        return this.processed;
-    }
+	public AtomicInteger getProcessed() {
+		return this.processed;
+	}
 
-    public AtomicInteger getInvalid() {
-        return this.invalid;
-    }
+	public AtomicInteger getInvalid() {
+		return this.invalid;
+	}
 }

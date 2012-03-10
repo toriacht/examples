@@ -34,28 +34,28 @@ import javax.validation.constraints.Min;
  */
 public class SimpleBean {
 
-    @Inject
-    @Min(10)
-    private Integer integer;
+	@Inject
+	@Min(10)
+	private Integer integer;
 
-    @Inject
-    @Min(5)
-    @Max(10)
-    private Integer validInteger;
+	@Inject
+	@Min(5)
+	@Max(10)
+	private Integer validInteger;
 
-    public Integer getInteger() {
-        return this.integer;
-    }
+	public Integer getInteger() {
+		return this.integer;
+	}
 
-    public void setInteger(final Integer integer) {
-        this.integer = integer;
-    }
+	public void setInteger(final Integer integer) {
+		this.integer = integer;
+	}
 
-    public Integer getValidInteger() {
-        return this.validInteger;
-    }
+	public Integer getValidInteger() {
+		return this.validInteger;
+	}
 
-    public void setValidInteger(final Integer validInteger) {
-        this.validInteger = validInteger;
-    }
+	public void setValidInteger(final Integer validInteger) {
+		this.validInteger = validInteger;
+	}
 }

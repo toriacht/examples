@@ -46,83 +46,81 @@ import org.slf4j.Logger;
 @ValidatorBinding
 public class ValidatorInterceptor {
 
-    @Inject
-    private Logger logger;
+	@Inject
+	private Logger logger;
 
-    @Inject
-    private Validator validator;
+	@Inject
+	private Validator validator;
 
-    @Inject
-    private ValidatorCounter counter;
+	@Inject
+	private ValidatorCounter counter;
 
-    /**
-     * 
-     * @param invocationContext
-     * @return
-     * @throws Exception
-     */
-    @AroundInvoke
-    public Object manage(final InvocationContext invocationContext) throws Exception {
-        this.logger.debug("interceptor called {}", invocationContext);
-        final InjectionPoint injectionPoint = this.findInjectionPoint(invocationContext);
+	/**
+	 * 
+	 * @param invocationContext
+	 * @return
+	 * @throws Exception
+	 */
+	@AroundInvoke
+	public Object manage(final InvocationContext invocationContext) throws Exception {
+		this.logger.debug("interceptor called {}", invocationContext);
+		final InjectionPoint injectionPoint = this.findInjectionPoint(invocationContext);
 
-        final Object result = invocationContext.proceed();
-        // handle result somehow
-        this.injectionPointValidator(injectionPoint, result);
+		final Object result = invocationContext.proceed();
+		// handle result somehow
+		this.injectionPointValidator(injectionPoint, result);
 
-        return result;
-    }
+		return result;
+	}
 
-    /**
-     * 
-     * @param invocationContext
-     * @return
-     */
-    private InjectionPoint findInjectionPoint(final InvocationContext invocationContext) {
-        for (final Object parameter : invocationContext.getParameters()) {
-            if (parameter instanceof InjectionPoint) {
-                this.logger.debug("found injection point parameter {}", parameter);
-                return (InjectionPoint) parameter;
-            }
-        }
+	/**
+	 * 
+	 * @param invocationContext
+	 * @return
+	 */
+	private InjectionPoint findInjectionPoint(final InvocationContext invocationContext) {
+		for (final Object parameter : invocationContext.getParameters()) {
+			if (parameter instanceof InjectionPoint) {
+				this.logger.debug("found injection point parameter {}", parameter);
+				return (InjectionPoint) parameter;
+			}
+		}
 
-        this.logger.debug("didn't find injection point parameter, returning null");
-        return null;
-    }
+		this.logger.debug("didn't find injection point parameter, returning null");
+		return null;
+	}
 
-    /**
-     * 
-     * @param injectionPoint
-     * @param value
-     * @return
-     */
-    public boolean injectionPointValidator(final InjectionPoint injectionPoint, final Object value) {
+	/**
+	 * 
+	 * @param injectionPoint
+	 * @param value
+	 * @return
+	 */
+	public boolean injectionPointValidator(final InjectionPoint injectionPoint, final Object value) {
 
-        if (injectionPoint == null) {
-            this.logger.debug("skipping null injection point");
-            return true;
-        }
-        this.counter.getProcessed().incrementAndGet();
-        final String name = injectionPoint.getMember().getName();
-        final Class<?> clazz = injectionPoint.getBean().getBeanClass();
+		if (injectionPoint == null) {
+			this.logger.debug("skipping null injection point");
+			return true;
+		}
+		this.counter.getProcessed().incrementAndGet();
+		final String name = injectionPoint.getMember().getName();
+		final Class<?> clazz = injectionPoint.getBean().getBeanClass();
 
-        this.logger.debug("validating injection point: [{}] in class: [{}]", name, clazz);
-        this.logger.debug("reflection type: [{}]", injectionPoint.getMember().getClass());
-        this.logger.debug("required type: [{}]", injectionPoint.getType());
+		this.logger.debug("validating injection point: [{}] in class: [{}]", name, clazz);
+		this.logger.debug("reflection type: [{}]", injectionPoint.getMember().getClass());
+		this.logger.debug("required type: [{}]", injectionPoint.getType());
 
-        final Set<?> violations = this.validator.validateValue(clazz, name, value);
+		final Set<?> violations = this.validator.validateValue(clazz, name, value);
 
-        if (violations.size() > 0) {
-            this.counter.getInvalid().incrementAndGet();
-            this.logger.warn("[{}]: violation(s) detected: [{}]", name, violations);
-            return true;
-        } else {
+		if (violations.size() > 0) {
+			this.counter.getInvalid().incrementAndGet();
+			this.logger.warn("[{}]: violation(s) detected: [{}]", name, violations);
+			return true;
+		} else {
 
-            this.logger.debug("[{}]: no violation(s) detected!", name);
-            return false;
-        }
-    }
-
-
+			this.logger.debug("[{}]: no violation(s) detected!", name);
+			return false;
+		}
+	}
 
 }

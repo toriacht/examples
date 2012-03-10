@@ -46,18 +46,17 @@ import org.hibernate.validator.HibernateValidatorConfiguration;
 
 @Singleton
 public class ValidatorProducer {
-    /**
+	/**
      * 
      */
-    private static final String HIBERNATE_VALIDATOR_FAIL_FAST = "hibernate.validator.fail_fast";
+	private static final String HIBERNATE_VALIDATOR_FAIL_FAST = "hibernate.validator.fail_fast";
 
-    @Produces
-    public Validator produceValidator() {
-        final HibernateValidatorConfiguration configuration = Validation.byProvider(HibernateValidator.class).configure();
-        final ValidatorFactory factory = configuration.addProperty(HIBERNATE_VALIDATOR_FAIL_FAST, "true")
-                .buildValidatorFactory();
+	@Produces
+	public Validator produceValidator() {
+		final HibernateValidatorConfiguration configuration = Validation.byProvider(HibernateValidator.class).configure();
+		final ValidatorFactory factory = configuration.addProperty(HIBERNATE_VALIDATOR_FAIL_FAST, "true").buildValidatorFactory();
 
-        return factory.getValidator();
+		return factory.getValidator();
 
-    }
+	}
 }

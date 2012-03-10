@@ -38,8 +38,8 @@ import org.slf4j.LoggerFactory;
  */
 @Singleton
 public class LoggerProducer {
-    @Produces
-    public Logger createLogger(final InjectionPoint injectionPoint) {
-        return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getSimpleName());
-    }
+	@Produces
+	public Logger createLogger(final InjectionPoint injectionPoint) {
+		return LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass().getSimpleName());
+	}
 }

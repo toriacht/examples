@@ -8,6 +8,6 @@ import javax.enterprise.event.Observes;
  * 
  */
 public class HasSomeOtherObserver {
-    public void secondSimpleObserver(@Observes final Integer event) {
-    }
+	public void secondSimpleObserver(@Observes final Integer event) {
+	}
 }

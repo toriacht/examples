@@ -10,12 +10,12 @@ import org.jboss.weld.environment.se.StartMain;
 
 public class Main {
 
-    /**
-     * @param args
-     */
-    public static void main(final String[] args) {
-        StartMain.main(args);
+	/**
+	 * @param args
+	 */
+	public static void main(final String[] args) {
+		StartMain.main(args);
 
-    }
+	}
 
 }

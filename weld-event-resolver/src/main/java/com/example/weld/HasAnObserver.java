@@ -8,7 +8,7 @@ import javax.enterprise.event.Observes;
  * 
  */
 public class HasAnObserver {
-    public void simpleObserver(@Observes final SimpleClass event) {
+	public void simpleObserver(@Observes final SimpleClass event) {
 
-    }
+	}
 }

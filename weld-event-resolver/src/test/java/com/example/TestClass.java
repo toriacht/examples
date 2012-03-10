@@ -29,42 +29,42 @@ import com.example.weld.SimpleClass;
 @RunWith(Arquillian.class)
 public class TestClass {
 
-    @Inject
-    BeanManager manager;
+	@Inject
+	BeanManager manager;
 
-    @Deployment
-    public static Archive<?> createTestArchive() {
-        return ShrinkWrap.create(JavaArchive.class, "archive.jar").addAsResource("META-INF/beans.xml", "META-INF/beans.xml")
-                .addPackage("com.example.weld");
-    }
+	@Deployment
+	public static Archive<?> createTestArchive() {
+		return ShrinkWrap.create(JavaArchive.class, "archive.jar").addAsResource("META-INF/beans.xml", "META-INF/beans.xml")
+				.addPackage("com.example.weld");
+	}
 
-    @Test
-    public void manager_not_null() {
-        Assert.assertNotNull(this.manager);
-    }
+	@Test
+	public void manager_not_null() {
+		Assert.assertNotNull(this.manager);
+	}
 
-    @Test
-    public void test_resolver_simple_class() {
+	@Test
+	public void test_resolver_simple_class() {
 
-        final Set<ObserverMethod<? super SimpleClass>> result = this.manager.resolveObserverMethods(new SimpleClass());
+		final Set<ObserverMethod<? super SimpleClass>> result = this.manager.resolveObserverMethods(new SimpleClass());
 
-        Assert.assertEquals(1, result.size());
+		Assert.assertEquals(1, result.size());
 
-        for (final ObserverMethod<? super SimpleClass> i : result) {
-            Assert.assertEquals(HasAnObserver.class, i.getBeanClass());
-        }
-    }
+		for (final ObserverMethod<? super SimpleClass> i : result) {
+			Assert.assertEquals(HasAnObserver.class, i.getBeanClass());
+		}
+	}
 
-    @Test
-    public void test_resolver_simple_integer() {
+	@Test
+	public void test_resolver_simple_integer() {
 
-        final Set<ObserverMethod<? super Integer>> result = this.manager.resolveObserverMethods(new Integer(1));
+		final Set<ObserverMethod<? super Integer>> result = this.manager.resolveObserverMethods(new Integer(1));
 
-        Assert.assertEquals(1, result.size());
+		Assert.assertEquals(1, result.size());
 
-        for (final ObserverMethod<? super Integer> i : result) {
-            Assert.assertEquals(HasSomeOtherObserver.class, i.getBeanClass());
-        }
-    }
+		for (final ObserverMethod<? super Integer> i : result) {
+			Assert.assertEquals(HasSomeOtherObserver.class, i.getBeanClass());
+		}
+	}
 
 }

@@ -42,20 +42,20 @@ import org.slf4j.Logger;
 @ValidatorBinding
 public class ValueProducer {
 
-    @Inject
-    private Logger logger;
+	@Inject
+	private Logger logger;
 
-    /**
-     * 
-     * @param injectionPoint
-     * @return
-     */
+	/**
+	 * 
+	 * @param injectionPoint
+	 * @return
+	 */
 
-    @Produces
-    public Integer produceInt(final InjectionPoint injectionPoint) {
-        this.logger.debug("produce integer value for injection point: {}",injectionPoint);
-        final Integer MAGIC_VALUE = 8;
+	@Produces
+	public Integer produceInt(final InjectionPoint injectionPoint) {
+		this.logger.debug("produce integer value for injection point: {}", injectionPoint);
+		final Integer MAGIC_VALUE = 8;
 
-        return MAGIC_VALUE;
-    }
+		return MAGIC_VALUE;
+	}
 }
