@@ -20,7 +20,7 @@ import org.slf4j.Logger;
  */
 
 @Singleton
-@ProducerValidatorBinding
+@ValidatorBinding
 public class ValueProducer {
 	
 	

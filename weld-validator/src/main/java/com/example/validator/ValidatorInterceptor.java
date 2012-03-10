@@ -12,13 +12,15 @@ import javax.validation.Validator;
 import org.slf4j.Logger;
 
 /**
- * Validate result interceptor 
+ * Validator interceptor - intercepts and validates if produced value
+ * obeys validation constraints 
+ *  
  * @author marko
  *
  */
 
 @Interceptor
-@ProducerValidatorBinding
+@ValidatorBinding
 public class ValidatorInterceptor {
 	
 	@Inject Logger logger;
@@ -32,12 +34,29 @@ public class ValidatorInterceptor {
 	@AroundInvoke
 	public Object manage(InvocationContext invocationContext) throws Exception {
 		logger.debug("interceptor called {}", invocationContext);
-		InjectionPoint injectionPoint = (InjectionPoint) invocationContext.getParameters()[0];
-		Object result = invocationContext.proceed();
+		InjectionPoint injectionPoint = findInjectionPoint(invocationContext);
 		
+		Object result = invocationContext.proceed();
+		// do something smart with the result
 		this.injectionPointValidator(injectionPoint, result);
 		
 		return result;
+	}
+	/**
+	 * 
+	 * @param invocationContext
+	 * @return
+	 */
+	private InjectionPoint findInjectionPoint(InvocationContext invocationContext) {
+		for (Object parameter : invocationContext.getParameters()){
+			if (parameter instanceof InjectionPoint){
+				logger.debug("found injection point parameter {}",parameter);
+				return (InjectionPoint) parameter;
+			}
+		}
+		
+		logger.debug("didn't find injection point parameter, returning null");
+		return null;
 	}
 	/**
 	 * 
@@ -46,6 +65,12 @@ public class ValidatorInterceptor {
 	 * @return
 	 */
 	public boolean injectionPointValidator(InjectionPoint injectionPoint, Object value){
+		
+		if (injectionPoint == null){
+			logger.debug("can't validate null injection point");
+			return true;
+		}
+		
 		String name 	= injectionPoint.getMember().getName();
 		Class<?> clazz 	= injectionPoint.getBean().getBeanClass();
 		

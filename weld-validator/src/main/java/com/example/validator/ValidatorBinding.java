@@ -23,6 +23,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * @author marko
  *
  */
-public @interface ProducerValidatorBinding {
+public @interface ValidatorBinding {
 
 }
