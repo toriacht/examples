@@ -23,45 +23,25 @@
  */
 package com.example.validator;
 
-import javax.inject.Inject;
+import java.util.concurrent.atomic.AtomicInteger;
 
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.Archive;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import javax.inject.Singleton;
 
 /**
- * 
  * @author marko
- * 
+ *
  */
+@Singleton
+public class ValidatorCounter {
 
-@RunWith(Arquillian.class)
-public class ValidatorTest {
+    private final AtomicInteger processed = new AtomicInteger(0);
+    private final AtomicInteger invalid = new AtomicInteger(0);
 
-    @Inject
-    private SimpleBean simpleBean;
-
-    @Inject
-    private ValidatorCounter counter;
-
-    @Deployment
-    public static Archive<?> createTestArchive() {
-        return ShrinkWrap.create(JavaArchive.class, "archive.jar").addAsResource("META-INF/beans.xml", "META-INF/beans.xml")
-                .addPackage("com.example.validator");
+    public AtomicInteger getProcessed() {
+        return this.processed;
     }
 
-    @Test
-    public void test_bean() {
-        Assert.assertNotNull("target bean should not be null", this.simpleBean);
-    }
-
-    @Test
-    public void test_counter() {
-        Assert.assertNotNull("validator counter should not be null", this.counter);
+    public AtomicInteger getInvalid() {
+        return this.invalid;
     }
 }

@@ -48,8 +48,12 @@ public class ValidatorInterceptor {
 
     @Inject
     private Logger logger;
+
     @Inject
     private Validator validator;
+
+    @Inject
+    private ValidatorCounter counter;
 
     /**
      * 
@@ -98,7 +102,7 @@ public class ValidatorInterceptor {
             this.logger.debug("skipping null injection point");
             return true;
         }
-
+        this.counter.getProcessed().incrementAndGet();
         final String name = injectionPoint.getMember().getName();
         final Class<?> clazz = injectionPoint.getBean().getBeanClass();
 
@@ -109,12 +113,16 @@ public class ValidatorInterceptor {
         final Set<?> violations = this.validator.validateValue(clazz, name, value);
 
         if (violations.size() > 0) {
+            this.counter.getInvalid().incrementAndGet();
             this.logger.warn("[{}]: violation(s) detected: [{}]", name, violations);
             return true;
         } else {
+
             this.logger.debug("[{}]: no violation(s) detected!", name);
             return false;
         }
     }
+
+
 
 }
