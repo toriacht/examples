@@ -54,7 +54,7 @@ public class ValueProducer {
 	@Produces
 	public Integer produceInt(final InjectionPoint injectionPoint) {
 		this.logger.debug("produce integer value for injection point: {}", injectionPoint);
-		final Integer MAGIC_VALUE = 8;
+		final Integer MAGIC_VALUE = 42;
 
 		return MAGIC_VALUE;
 	}
