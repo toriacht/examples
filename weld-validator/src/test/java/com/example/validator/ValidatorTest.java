@@ -51,7 +51,8 @@ public class ValidatorTest {
 
 	@Deployment
 	public static Archive<?> createTestArchive() {
-		return ShrinkWrap.create(JavaArchive.class, "archive.jar").addAsResource("META-INF/beans.xml", "META-INF/beans.xml")
+		return ShrinkWrap.create(JavaArchive.class, "archive.jar")
+				.addAsResource("META-INF/beans.xml", "META-INF/beans.xml")
 				.addPackage("com.example.validator");
 	}
 
