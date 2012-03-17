@@ -37,10 +37,14 @@ import org.jboss.solder.el.Resolver;
 import org.slf4j.Logger;
 
 /**
- * Simple EL resolver
- * using solder's Resolver annotation to register ConfigElResolver as an EL resolver implementation
+ * Simple EL Resolver
  * 
+ * Solder's Resolver annotation used to register ConfigElResolver as an EL resolver implementation
+ * 
+ * @see http://docs.jboss.org/seam/3/3.1.0.Final/reference/en-US/html/solder-elextensions.html
+ * @see http://docs.jboss.org/seam/3/3.1.0.Final/api/
  * @see http://refcardz.dzone.com/refcardz/essential-jsp-expression#refcard-download-social-buttons-display
+ * 
  * @author marko
  * 
  */
@@ -80,11 +84,13 @@ public class ConfigELResolver extends ELResolver {
 		this.logger.debug("getValue() context={}, base={}, property={}", new Object[] { context, base, property });
 		
 		if (CONFIGURED.equals(property)) {
+			// important part, setting expression as resolved
 			context.setPropertyResolved(true);
 			return RETURN_VALUE;
 		}
 		
 		if (MAP.equals(property)) {
+			// important part, setting expression as resolved
 			context.setPropertyResolved(true);
 			return map;
 		}
