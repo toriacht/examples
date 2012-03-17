@@ -45,6 +45,10 @@ public class ELResolverTest {
 	@Inject
 	Expressions expression;
 
+	/*
+	 * 
+	 * 
+	 */
 	@Deployment
 	public static Archive<?> createTestArchive() {
 		return ShrinkWrap.create(JavaArchive.class)
@@ -53,11 +57,19 @@ public class ELResolverTest {
 				.addPackage(Expressions.class.getPackage().getName());
 	}
 
+	/*
+	 * 
+	 *  
+	 */
 	@Test
 	public void expressionsNotNullTest(){
-		Assert.assertNotNull(this.expression);
+		Assert.assertNotNull("Expression resolver must be not null", this.expression);
 	}
 
+	/*
+	 * 
+	 * 
+	 */
 	@Test
 	public void resolveExpressionTest() {
 		Assert.assertNotNull(this.expression.evaluateValueExpression("${configured}"));
@@ -67,6 +79,10 @@ public class ELResolverTest {
 		Assert.assertTrue((Boolean) this.expression.evaluateValueExpression("${configured == 'RETURN VALUE'}"));
 	}
 
+	/*
+	 * 
+	 * 
+	 */
 	@Test
 	public void resolveMapExpressionTest() {
 		// accessing map using ${map['KEY']}"
@@ -76,6 +92,10 @@ public class ELResolverTest {
 		Assert.assertEquals("value", this.expression.evaluateValueExpression("${map.KEY}"));
 	}
 
+	/*
+	 * 
+	 * 
+	 */
 	@Test
 	public void resolveOperationsMapExpressionTest() {
 		// demonstrating arithmetic operation
@@ -84,6 +104,10 @@ public class ELResolverTest {
 		Assert.assertTrue((Boolean) this.expression.evaluateValueExpression("${map.NUM_1 < map.NUM_2}"));
 	}
 
+	/*
+	 *
+	 * 
+	 */
 	@Test
 	public void resolveNamedExpressionTest() {
 		// demonstrating resolution of beans annotated with @Named
