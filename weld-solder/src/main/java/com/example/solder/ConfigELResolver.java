@@ -31,27 +31,40 @@ import java.util.Map;
 import javax.el.ELContext;
 import javax.el.ELResolver;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import org.jboss.solder.el.Resolver;
 import org.slf4j.Logger;
 
 /**
+ * Simple EL resolver
+ * using solder's Resolver annotation to register ConfigElResolver as an EL resolver implementation
+ * 
  * @see http://refcardz.dzone.com/refcardz/essential-jsp-expression#refcard-download-social-buttons-display
  * @author marko
  * 
  */
+
 @Resolver
+@Singleton
 public class ConfigELResolver extends ELResolver {
-	/** */
+
+	/** ${configured} expression definition */
 	private static final String CONFIGURED = "configured";
-	/** */
+	/** value of ${configured} expression */
+	private static final String RETURN_VALUE = "RETURN VALUE";
+	/** ${map. } expression definition */
 	private static final String MAP = "map";
 
+	/** values for ${map. } */
 	private static final Map<String, String> map = new HashMap<String, String>();
 
 	static {
+		/** values of ${map.NUM_1} or ${map['NUM_1']} */
 		map.put("NUM_1", "1");
+		/** values of ${map.NUM_2} or ${map['NUM_2']} */
 		map.put("NUM_2", "2");
+		/** values of ${map.KEY} or ${map['KEY']} */
 		map.put("KEY", "value");
 	}
 
@@ -68,7 +81,7 @@ public class ConfigELResolver extends ELResolver {
 		
 		if (CONFIGURED.equals(property)) {
 			context.setPropertyResolved(true);
-			return "RETURN VALUE";
+			return RETURN_VALUE;
 		}
 		
 		if (MAP.equals(property)) {

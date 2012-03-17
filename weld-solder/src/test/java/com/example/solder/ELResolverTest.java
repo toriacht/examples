@@ -43,9 +43,6 @@ import org.junit.runner.RunWith;
 public class ELResolverTest {
 
 	@Inject
-	SimpleClass simpleClass;
-
-	@Inject
 	Expressions expression;
 
 	@Deployment
@@ -64,32 +61,43 @@ public class ELResolverTest {
 	@Test
 	public void resolveExpressionTest() {
 		Assert.assertNotNull(this.expression.evaluateValueExpression("${configured}"));
+		// demonstrating evaluation of ${configured} expression
 		Assert.assertEquals("RETURN VALUE", this.expression.evaluateValueExpression("${configured}"));
+		// demonstrating logical expression
 		Assert.assertTrue((Boolean) this.expression.evaluateValueExpression("${configured == 'RETURN VALUE'}"));
 	}
 
 	@Test
 	public void resolveMapExpressionTest() {
+		// accessing map using ${map['KEY']}"
 		Assert.assertNotNull(this.expression.evaluateValueExpression("${map['KEY']}"));
 		Assert.assertEquals("value", this.expression.evaluateValueExpression("${map['KEY']}"));
+		// accessing map using ${map.KEY}"
 		Assert.assertEquals("value", this.expression.evaluateValueExpression("${map.KEY}"));
 	}
 
 	@Test
 	public void resolveOperationsMapExpressionTest() {
+		// demonstrating arithmetic operation
 		Assert.assertEquals(3L, this.expression.evaluateValueExpression("${map.NUM_1 + map.NUM_2}"));
+		// demonstrating logical expression using maps
 		Assert.assertTrue((Boolean) this.expression.evaluateValueExpression("${map.NUM_1 < map.NUM_2}"));
 	}
 
 	@Test
 	public void resolveNamedExpressionTest() {
+		// demonstrating resolution of beans annotated with @Named
 		Assert.assertNotNull(this.expression.evaluateValueExpression("${simpleClass}"));
+		// accessing java bean property
 		Assert.assertEquals("Marko",
 				this.expression.evaluateValueExpression("${simpleClass.name}"));
+		// accessing java bean property + string concatenation
 		Assert.assertEquals("Marko Milenkovic",
 				this.expression.evaluateValueExpression("${simpleClass.name} ${simpleClass.lastName}"));
+		// accessing java bean property + arithmetic operation
 		Assert.assertEquals(3L,
 				this.expression.evaluateValueExpression("${simpleClass.first + simpleClass.second}"));
+		// accessing java bean property + string concatenation
 		Assert.assertEquals("1+2",
 				this.expression.evaluateValueExpression("${simpleClass.first}+${simpleClass.second}"));
 	}
