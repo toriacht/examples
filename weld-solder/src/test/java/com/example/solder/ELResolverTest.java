@@ -80,6 +80,10 @@ public class ELResolverTest {
 		Assert.assertEquals("RETURN VALUE", this.expression.evaluateValueExpression("${configured}"));
 		// logical expression
 		Assert.assertTrue((Boolean) this.expression.evaluateValueExpression("${configured == 'RETURN VALUE'}"));
+		// not an expression
+		Assert.assertEquals("configured", this.expression.evaluateValueExpression("configured"));
+		// string and expression concatenation
+		Assert.assertEquals("SEE RETURN VALUE", this.expression.evaluateValueExpression("SEE ${configured}"));
 	}
 
 	/*
