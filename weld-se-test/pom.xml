@@ -97,6 +97,6 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${version.slf4j}</version>
 		</dependency>
-		
+
 	</dependencies>
 </project>

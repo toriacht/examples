@@ -21,23 +21,53 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
  */
-package com.example.weld;
+package com.example.weld.logger;
 
+import javax.inject.Inject;
+
+import junit.framework.Assert;
+
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.shrinkwrap.api.Archive;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.solder.logging.Logger;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import com.example.weld.logger.InjectLoggerClass;
 
 /**
- * An implementation of SimpleInterface
+ * testing seam solder logging
  * 
  * @author marko
  * 
  */
-public class SimpleInterfaceImpl implements SimpleInterface {
+@RunWith(Arquillian.class)
+public class InjectLoggerClassTest {
 
-	/* (non-Javadoc)
-	 * @see com.example.weld.SimpleInterface#check()
-	 */
-	@Override
-	public boolean isAlternativeBean() {
-		return false;
+	@Inject
+	InjectLoggerClass injectLoggerClass;
+
+	@Deployment
+	public static Archive<?> createTestArchive() {
+		return ShrinkWrap.create(JavaArchive.class)
+				.addAsResource("META-INF/beans.xml", "META-INF/beans.xml")
+				.addPackage(InjectLoggerClass.class.getPackage().getName())
+				.addPackage(Logger.class.getPackage().getName());
+
+	}
+
+	@Test
+	public void notNullTest() {
+		Assert.assertNotNull(this.injectLoggerClass);
+
+	}
+
+	@Test
+	public void testCategory() {
+		Assert.assertEquals("TEST_CATEGORY", this.injectLoggerClass.getLogger().getName());
 	}
 
 }

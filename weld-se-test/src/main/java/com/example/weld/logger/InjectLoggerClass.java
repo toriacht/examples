@@ -21,23 +21,35 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
  */
-package com.example.weld;
+package com.example.weld.logger;
 
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import org.jboss.solder.logging.Category;
+import org.jboss.solder.logging.Logger;
 
 /**
- * An implementation of SimpleInterface
+ * testing seam solder logging support
  * 
  * @author marko
  * 
  */
-public class SimpleInterfaceImpl implements SimpleInterface {
+@Singleton
+public class InjectLoggerClass {
 
-	/* (non-Javadoc)
-	 * @see com.example.weld.SimpleInterface#check()
-	 */
-	@Override
-	public boolean isAlternativeBean() {
-		return false;
+	@Inject
+	@Category("TEST_CATEGORY")
+	Logger logger;
+
+	@PostConstruct
+	public void init() {
+		this.logger.info("InjectLoggerClass has been initialized! ");
+	}
+
+	public Logger getLogger() {
+		return this.logger;
 	}
 
 }
