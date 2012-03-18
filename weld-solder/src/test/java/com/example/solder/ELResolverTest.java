@@ -66,6 +66,7 @@ public class ELResolverTest {
 	 */
 	@Test
 	public void expressionsNotNullTest(){
+		// check if expression resolver is not null
 		Assert.assertNotNull("Expression resolver must be not null", this.expression);
 	}
 
@@ -75,6 +76,7 @@ public class ELResolverTest {
 	 */
 	@Test
 	public void resolveExpressionTest() {
+		// check if expression is evaluating
 		Assert.assertNotNull(this.expression.evaluateValueExpression("${configured}"));
 		// evaluation of ${configured} expression
 		Assert.assertEquals("RETURN VALUE", this.expression.evaluateValueExpression("${configured}"));
