@@ -91,13 +91,13 @@ public class ELResolverV2Test {
 	 */
 	@Test
 	public void resolveNamedExpressionTest() {
-		Assert.assertEquals("MARKO",
-				this.expression.evaluateValueExpression("${simpleClass.toUpperCase('marko')}"));
+		Assert.assertEquals("HOMER",
+				this.expression.evaluateValueExpression("${simpleClass.toUpperCase('homer')}"));
 		// method call without parameters
 		Assert.assertEquals(5,
 				this.expression.evaluateValueExpression("${simpleClass.name.length()}"));
 		// method call with two parameters
-		Assert.assertEquals("Milenkovic Marko",
+		Assert.assertEquals("Simpson Homer",
 				this.expression.evaluateValueExpression("${simpleClass.concatInverse(simpleClass.name, simpleClass.lastName)}"));
 	}
 

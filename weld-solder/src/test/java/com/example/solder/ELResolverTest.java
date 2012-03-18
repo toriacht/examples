@@ -116,10 +116,10 @@ public class ELResolverTest {
 		// resolution of beans annotated with @Named
 		Assert.assertNotNull(this.expression.evaluateValueExpression("${simpleClass}"));
 		// accessing java bean property
-		Assert.assertEquals("Marko",
+		Assert.assertEquals("Homer",
 				this.expression.evaluateValueExpression("${simpleClass.name}"));
 		// accessing java bean property + string concatenation
-		Assert.assertEquals("Marko Milenkovic",
+		Assert.assertEquals("Homer Simpson",
 				this.expression.evaluateValueExpression("${simpleClass.name} ${simpleClass.lastName}"));
 		// accessing java bean property + arithmetic operation
 		Assert.assertEquals(3L,

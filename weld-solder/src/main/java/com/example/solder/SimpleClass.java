@@ -40,8 +40,8 @@ public class SimpleClass implements Serializable {
 
 	private final int first = 1;
 	private final int second = 2;
-	private final String name = "Marko";
-	private final String lastName = "Milenkovic";
+	private final String name = "Homer";
+	private final String lastName = "Simpson";
 	private final SimpleEnum simpleEnumValue = SimpleEnum.SOUTH;
 
 	public String toUpperCase(final String value) {
