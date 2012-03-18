@@ -21,41 +21,28 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
  */
-
 package com.example.weld;
 
-import javax.inject.Inject;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.Archive;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import javax.inject.Qualifier;
 
-@RunWith(Arquillian.class)
-public class SimpleClassTest {
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-	@Inject
-	SimpleClass simple;
+@Qualifier
+@Target({ TYPE, METHOD, PARAMETER, FIELD })
+@Retention(RUNTIME)
+@Documented
+/**
+ * @author marko
+ *
+ */
+public @interface AQualifier {
 
-	@Deployment
-	public static Archive<?> createTestArchive() {
-		return ShrinkWrap.create(JavaArchive.class)
-				.addAsResource("META-INF/beans.xml", "META-INF/beans.xml")
-				.addPackage(SimpleClass.class.getPackage().getName());
-	}
-
-	@Test
-	public void first_test() {
-		Assert.assertNotNull(this.simple);
-	}
-
-	@Test
-	public void first_second() {
-		final String name = "marko";
-		Assert.assertEquals("Hello " + name.toUpperCase(), this.simple.sayHello(name));
-	}
 }

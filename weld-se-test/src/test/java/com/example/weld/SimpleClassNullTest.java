@@ -21,7 +21,6 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
  */
-
 package com.example.weld;
 
 import javax.inject.Inject;
@@ -35,11 +34,16 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * @author marko
+ *
+ */
 @RunWith(Arquillian.class)
-public class SimpleClassTest {
+public class SimpleClassNullTest {
 
 	@Inject
-	SimpleClass simple;
+	@AQualifier
+	private SimpleClass simple;
 
 	@Deployment
 	public static Archive<?> createTestArchive() {
@@ -49,13 +53,7 @@ public class SimpleClassTest {
 	}
 
 	@Test
-	public void first_test() {
-		Assert.assertNotNull(this.simple);
-	}
-
-	@Test
-	public void first_second() {
-		final String name = "marko";
-		Assert.assertEquals("Hello " + name.toUpperCase(), this.simple.sayHello(name));
+	public void testSimpleClass() {
+		Assert.assertNull(this.simple);
 	}
 }
