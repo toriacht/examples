@@ -79,11 +79,16 @@
 			<version>1.0.0.CR3</version>
 		</dependency>
 		
+
+		<dependency>
+			<groupId>org.jboss.solder</groupId>
+			<artifactId>solder-impl</artifactId>
+			<version>3.1.0.Final</version>
+		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>${version.slf4j}</version>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.4</version>
 		</dependency>
-		
 	</dependencies>
 </project>
