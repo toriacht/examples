@@ -36,9 +36,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
+ * Expression language 1.0 feature demonstration
+ * 
  * @author marko
- *
+ * 
  */
+
 @RunWith(Arquillian.class)
 public class ELResolverTest {
 
@@ -73,9 +76,9 @@ public class ELResolverTest {
 	@Test
 	public void resolveExpressionTest() {
 		Assert.assertNotNull(this.expression.evaluateValueExpression("${configured}"));
-		// demonstrating evaluation of ${configured} expression
+		// evaluation of ${configured} expression
 		Assert.assertEquals("RETURN VALUE", this.expression.evaluateValueExpression("${configured}"));
-		// demonstrating logical expression
+		// logical expression
 		Assert.assertTrue((Boolean) this.expression.evaluateValueExpression("${configured == 'RETURN VALUE'}"));
 	}
 
@@ -98,9 +101,9 @@ public class ELResolverTest {
 	 */
 	@Test
 	public void resolveOperationsMapExpressionTest() {
-		// demonstrating arithmetic operation
+		// arithmetic operation
 		Assert.assertEquals(3L, this.expression.evaluateValueExpression("${map.NUM_1 + map.NUM_2}"));
-		// demonstrating logical expression using maps
+		// logical expression using maps
 		Assert.assertTrue((Boolean) this.expression.evaluateValueExpression("${map.NUM_1 < map.NUM_2}"));
 	}
 
@@ -110,7 +113,7 @@ public class ELResolverTest {
 	 */
 	@Test
 	public void resolveNamedExpressionTest() {
-		// demonstrating resolution of beans annotated with @Named
+		// resolution of beans annotated with @Named
 		Assert.assertNotNull(this.expression.evaluateValueExpression("${simpleClass}"));
 		// accessing java bean property
 		Assert.assertEquals("Marko",
@@ -125,4 +128,25 @@ public class ELResolverTest {
 		Assert.assertEquals("1+2",
 				this.expression.evaluateValueExpression("${simpleClass.first}+${simpleClass.second}"));
 	}
+
+	/*
+	 * The EL supports both immediate and deferred evaluation of expressions. 
+	 * Immediate evaluation means that the expression is evaluated and the result returned as soon as the page is first rendered. 
+	 * Deferred evaluation means that the technology using the expression language can use its own machinery to evaluate the 
+	 * expression sometime later during the page’s lifecycle, whenever it is appropriate to do so.
+	 * 
+	 * Those expressions that are evaluated immediately use the ${} syntax. 
+	 * Expressions whose evaluation is deferred use the #{} syntax.
+	 *  
+	 */
+	@Test
+	public void resolveDeferredExpressionTest() {
+		Assert.assertNotNull(this.expression.evaluateValueExpression("#{configured}"));
+		// deferred evaluation of #{configured} expression
+		Assert.assertEquals("RETURN VALUE", this.expression.evaluateValueExpression("#{configured}"));
+		// deferred logical expression
+		Assert.assertTrue((Boolean) this.expression.evaluateValueExpression("#{configured == 'RETURN VALUE'}"));
+	}
+
+
 }

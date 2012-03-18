@@ -23,52 +23,11 @@
  */
 package com.example.solder;
 
-import java.io.Serializable;
-
-import javax.inject.Named;
-
 /**
- * 
  * @author marko
- * 
+ *
  */
+public enum SimpleEnum {
+	NORTH, SOUTH, EAST, WEST;
 
-@Named
-public class SimpleClass implements Serializable {
-	
-	private static final long serialVersionUID = 6987269967957360462L;
-
-	private final int first = 1;
-	private final int second = 2;
-	private final String name = "Marko";
-	private final String lastName = "Milenkovic";
-	private final SimpleEnum simpleEnumValue = SimpleEnum.SOUTH;
-
-	public String toUpperCase(final String value) {
-		return value.toUpperCase();
-	}
-
-	public String concatInverse(final String first, final String second) {
-		return second + " " + first;
-	}
-
-	public int getFirst() {
-		return this.first;
-	}
-
-	public int getSecond() {
-		return this.second;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public String getLastName() {
-		return this.lastName;
-	}
-
-	public SimpleEnum getSimpleEnumValue() {
-		return this.simpleEnumValue;
-	}
 }
