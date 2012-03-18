@@ -80,17 +80,16 @@ public class ConfigELResolver extends ELResolver {
 	 */
 	@Override
 	public Object getValue(final ELContext context, final Object base, final Object property) {
-
 		this.logger.debug("getValue() context={}, base={}, property={}", new Object[] { context, base, property });
 		
 		if (CONFIGURED.equals(property)) {
-			// important part, setting expression as resolved
+			// important part, set expression as resolved
 			context.setPropertyResolved(true);
 			return RETURN_VALUE;
 		}
 		
 		if (MAP.equals(property)) {
-			// important part, setting expression as resolved
+			// important part, set expression as resolved
 			context.setPropertyResolved(true);
 			return map;
 		}
@@ -103,7 +102,6 @@ public class ConfigELResolver extends ELResolver {
 	 */
 	@Override
 	public Class<?> getType(final ELContext context, final Object base, final Object property) {
-
 		this.logger.debug("getType() context={}, base={}, property={}", new Object[] { context, base, property });
 
 		if (CONFIGURED.equals(property)) {
