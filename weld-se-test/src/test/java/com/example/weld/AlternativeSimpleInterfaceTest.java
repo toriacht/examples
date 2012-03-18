@@ -36,8 +36,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
+ * injectiong default implementation
+ * 
  * @author marko
- *
+ * 
  */
 @RunWith(Arquillian.class)
 public class AlternativeSimpleInterfaceTest {
@@ -53,9 +55,11 @@ public class AlternativeSimpleInterfaceTest {
 				.addClass(SimpleInterfaceAlternative.class);
 	}
 
+	// as there is no other implementation than SimpleInterfaceAternative
+	// that one should be injected
 	@Test
 	public void test() {
-		Assert.assertNotNull("should inject alternative", this.simple);
-		Assert.assertTrue("should be the alternative", this.simple.isAlternativeBean());
+		Assert.assertNotNull("should inject default implementation", this.simple);
+		Assert.assertTrue("should be be default implementation", this.simple.isAlternativeBean());
 	}
 }

@@ -53,6 +53,8 @@ public class OriginalSimpleInterfaceTest {
 				.addClass(SimpleInterfaceImpl.class);
 	}
 
+	// as there is one more implementation of SimpleInterface
+	// default implementation should be ignored
 	@Test
 	public void test() {
 		Assert.assertNotNull("shouldn't be null", this.simple);

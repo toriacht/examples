@@ -24,6 +24,7 @@
 package com.example.weld;
 
 /**
+ * An implementation of SimpleInterface
  * 
  * @author marko
  * 

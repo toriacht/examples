@@ -27,6 +27,9 @@ import org.jboss.solder.bean.defaultbean.DefaultBean;
 
 /**
  * 
+ * In case no other implementation of SimpleInterface is present
+ * this bean should be injected
+ * 
  * @author marko
  * 
  */

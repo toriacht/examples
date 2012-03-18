@@ -24,12 +24,13 @@
 package com.example.weld;
 
 /**
+ * 
  * @author marko
- *
+ * 
  */
 public interface SimpleInterface {
 	/**
-	 * is this bean alternative implementation?
+	 * Is the bean alternative or implementation?
 	 * 
 	 * @return true if it is
 	 */
